@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cryptid Encounter Probability</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .result {
+            margin-top: 20px;
+        }
+
+        .cryptid-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .cryptid-list li {
+            padding: 5px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+            text-transform: capitalize;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-size: 1.1em;
+        }
+
+        h1,
+        h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="base-values">
+            <h2>Cryptid Base Values:</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Base Probability</th>
+                        <th>Distance Multiplier</th>
+                        <th>Luck Multiplier</th>
+                    </tr>
+                </thead>
+                <tbody id="baseValueList"></tbody>
+            </table>
+        </div>
+        <h1>Calculate Luck Effect to Probabilities</h1>
+        <form id="cryptidForm">
+            <div>
+                <label for="luck">Luck (0-100):</label>
+                <input placeholder="0" type="number" id="luck" name="luck" min="0" max="100" required>
+            </div>
+            <button type="submit">calculate</button>
+        </form>
+
+        <div class="result" id="result">
+
+            <table id="probabilityTable">
+                <thead>
+                    <tr>
+                        <th>Cryptid</th>
+                        <th>Probability</th>
+                    </tr>
+
+                </thead>
+                <tbody id="probabilityTableBody">
+                    <tr>
+                        <td>normal</td>
+                        <td>75.64%</td>
+                    </tr>
+                    <tr>
+                        <td>rare</td>
+                        <td>15.13%</td>
+                    </tr>
+                    <tr>
+                        <td>unique</td>
+                        <td>7.56%</td>
+                    </tr>
+                    <tr>
+                        <td>legendary</td>
+                        <td>1.51%</td>
+                    </tr>
+                    <tr>
+                        <td>mythical</td>
+                        <td>0.15%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="simulate-walking">
+            <h2>Simulate Walking</h2>
+            <div>
+                <label for="walkDistance">Walking Distance (km):</label>
+                <input type="number" id="walkDistance" name="walkDistance" required>
+            </div>
+
+            <button id="startWalking">Start Walking</button>
+            <h2></h2>
+            <div>
+                <div>You will encounter cryptid every <strong id="cryptidEncounterValue">250</strong> meter (this value will reduce every 1 km)</div>
+                <div>You walked <strong id="walked">0</strong> km</div>
+                <div>Next cryptid within <strong id="nextCryptid">250</strong> meter</div>
+            </div>
+            <h2>Walking Logs</h2>
+
+            <div id="logList">
+                ...
+            </div>
+        </div>
+    </div>
+
+    <script src="cryptid.js"></script>
+</body>
+
+</html>
